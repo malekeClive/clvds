@@ -1,9 +1,21 @@
+import "@clvds/ui/style.css";
+import { Button } from "@clvds/ui/core";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@acme/ui/button";
 
 const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
+    variant: {
+      control: { type: "radio" },
+      options: [
+        "default",
+        "secondary",
+        "destructive",
+        "outline",
+        "ghost",
+        "link",
+      ],
+    },
     type: {
       control: { type: "radio" },
       options: ["button", "submit", "reset"],
@@ -29,18 +41,13 @@ export const Primary: Story = {
         alert("Hello from Turborepo!");
       }}
     >
-      Hello
+      {props.children}
     </Button>
   ),
   name: "Button",
   args: {
     children: "Hello",
     type: "button",
-    style: {
-      color: "blue",
-      border: "1px solid gray",
-      padding: 10,
-      borderRadius: 10,
-    },
+    variant: "default",
   },
 };
